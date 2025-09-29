@@ -1,18 +1,24 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-island.jpg";
+import { useParallax } from "@/hooks/use-parallax";
 
 const Hero = () => {
+  const { elementRef, offset } = useParallax(0.3);
+  
   const scrollToContent = () => {
     const firstSection = document.querySelector('section:nth-of-type(2)');
     firstSection?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section ref={elementRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background image with overlay */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-0"
+        style={{ 
+          backgroundImage: `url(${heroImage})`,
+          transform: `translateY(${offset}px)`
+        }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/50 to-primary/70"></div>
       </div>

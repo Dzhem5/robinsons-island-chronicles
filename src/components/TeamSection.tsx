@@ -1,3 +1,5 @@
+import { useParallax } from "@/hooks/use-parallax";
+
 const teamMembers = [
   {
     name: "Dzhem",
@@ -26,10 +28,15 @@ const teamMembers = [
 ];
 
 const TeamSection = () => {
+  const { elementRef, offset } = useParallax(0.1);
+  
   return (
-    <section className="py-24 px-6 md:px-8 lg:px-12 bg-gradient-to-b from-muted/30 to-background">
+    <section ref={elementRef} className="py-24 px-6 md:px-8 lg:px-12 bg-gradient-to-b from-muted/30 to-background">
       <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-20 animate-fade-in-up">
+        <div 
+          className="text-center mb-20 animate-fade-in-up"
+          style={{ transform: `translateY(${offset * 0.5}px)` }}
+        >
           <div className="inline-block px-6 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-6">
             👥 Екипът зад проекта
           </div>

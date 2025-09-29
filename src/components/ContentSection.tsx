@@ -1,3 +1,5 @@
+import { useParallax } from "@/hooks/use-parallax";
+
 interface ContentSectionProps {
   title: string;
   subtitle: string;
@@ -10,13 +12,19 @@ interface ContentSectionProps {
 
 const ContentSection = ({ title, subtitle, content, imagePosition, index, backgroundColor = "bg-background", image }: ContentSectionProps) => {
   const isLeft = imagePosition === "left";
+  const { elementRef: imageRef, offset: imageOffset } = useParallax(0.15);
+  const { elementRef: textRef, offset: textOffset } = useParallax(0.08);
   
   return (
     <section className={`py-24 px-6 md:px-8 lg:px-12 ${backgroundColor}`}>
       <div className="container mx-auto max-w-7xl">
         <div className={`flex flex-col ${isLeft ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-16 items-center`}>
           {/* Image */}
-          <div className={`w-full lg:w-1/2 ${isLeft ? 'animate-slide-in-left' : 'animate-slide-in-right'}`}>
+          <div 
+            ref={imageRef}
+            className={`w-full lg:w-1/2 ${isLeft ? 'animate-slide-in-left' : 'animate-slide-in-right'}`}
+            style={{ transform: `translateY(${imageOffset}px)` }}
+          >
             <div className="relative p-2">
               {/* Animated border frame */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary via-accent to-secondary animate-border-flow opacity-60"></div>
@@ -61,7 +69,14 @@ const ContentSection = ({ title, subtitle, content, imagePosition, index, backgr
           </div>
 
           {/* Content Card */}
-          <div className={`w-full lg:w-1/2 animate-fade-in-up`} style={{ animationDelay: '0.2s' }}>
+          <div 
+            ref={textRef}
+            className={`w-full lg:w-1/2 animate-fade-in-up`} 
+            style={{ 
+              animationDelay: '0.2s',
+              transform: `translateY(${textOffset}px)`
+            }}
+          >
             <div className="bg-card rounded-3xl p-10 md:p-12 shadow-medium hover:shadow-large transition-all duration-300 border border-border/50">
               <div className="space-y-6">
                 <div>

@@ -3,8 +3,10 @@ import collage2 from "@/assets/collage-2.jpg";
 import collage3 from "@/assets/collage-3.jpg";
 import collage4 from "@/assets/collage-4.jpg";
 import collage5 from "@/assets/collage-5.jpg";
+import { useParallax } from "@/hooks/use-parallax";
 
 const ImageCollage = () => {
+  const { elementRef, offset } = useParallax(0.12);
   const images = [
     { src: collage1, alt: "Робинзон Крузо - Корица на книгата" },
     { src: collage2, alt: "Робинзон Крузо с чадър" },
@@ -14,9 +16,12 @@ const ImageCollage = () => {
   ];
 
   return (
-    <section className="py-24 px-6 md:px-8 lg:px-12 bg-muted/30">
+    <section ref={elementRef} className="py-24 px-6 md:px-8 lg:px-12 bg-muted/30">
       <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-16 animate-fade-in-up">
+        <div 
+          className="text-center mb-16 animate-fade-in-up"
+          style={{ transform: `translateY(${offset * 0.5}px)` }}
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
             Галерия на приключенията
           </h2>

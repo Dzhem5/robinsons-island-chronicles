@@ -43,21 +43,28 @@ const Index = () => {
     <div className="min-h-screen">
       <Hero />
       
-      {sections.map((section, index) => (
-        <ContentSection
-          key={section.title}
-          title={section.title}
-          subtitle={section.subtitle}
-          content={section.content}
-          imagePosition={index % 2 === 0 ? "left" : "right"}
-          index={index + 1}
-        />
-      ))}
+      {sections.map((section, index) => {
+        const backgrounds = ["bg-background", "bg-muted/20", "bg-background", "bg-muted/20", "bg-background"];
+        return (
+          <ContentSection
+            key={section.title}
+            title={section.title}
+            subtitle={section.subtitle}
+            content={section.content}
+            imagePosition={index % 2 === 0 ? "left" : "right"}
+            index={index + 1}
+            backgroundColor={backgrounds[index]}
+          />
+        );
+      })}
 
       <TeamSection />
 
-      <footer className="bg-primary text-white py-8 text-center">
-        <p className="text-lg">© 2025 Робинзон Крузо - Училищен Проект</p>
+      <footer className="bg-gradient-ocean text-white py-12 text-center">
+        <div className="container mx-auto px-6">
+          <p className="text-lg font-light">© 2025 Робинзон Крузо - Училищен Проект</p>
+          <p className="text-sm opacity-80 mt-2">Dzhem • Denislav • İsa • Emir</p>
+        </div>
       </footer>
     </div>
   );

@@ -4,23 +4,24 @@ interface ContentSectionProps {
   content: string;
   imagePosition: "left" | "right";
   index: number;
+  backgroundColor?: string;
 }
 
-const ContentSection = ({ title, subtitle, content, imagePosition, index }: ContentSectionProps) => {
+const ContentSection = ({ title, subtitle, content, imagePosition, index, backgroundColor = "bg-background" }: ContentSectionProps) => {
   const isLeft = imagePosition === "left";
   
   return (
-    <section className="py-24 px-6 md:px-8 lg:px-12">
+    <section className={`py-24 px-6 md:px-8 lg:px-12 ${backgroundColor}`}>
       <div className="container mx-auto max-w-7xl">
         <div className={`flex flex-col ${isLeft ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-16 items-center`}>
           {/* Image placeholder */}
           <div className={`w-full lg:w-1/2 ${isLeft ? 'animate-slide-in-left' : 'animate-slide-in-right'}`}>
-            <div className="relative aspect-[16/11] bg-gradient-card rounded-3xl overflow-hidden shadow-medium border border-border/50 hover:shadow-large transition-all duration-500 hover:-translate-y-1">
-              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-muted/50 to-muted/30">
+            <div className="relative aspect-[16/11] bg-gradient-card rounded-3xl overflow-hidden shadow-large border-2 border-border/50 hover:shadow-large hover:scale-[1.02] transition-all duration-500">
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-muted/80 to-muted/40">
                 <div className="text-center p-8">
-                  <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-primary/10 flex items-center justify-center">
+                  <div className="w-24 h-24 mx-auto mb-6 rounded-2xl bg-primary/10 flex items-center justify-center backdrop-blur-sm border border-primary/20">
                     <svg 
-                      className="w-10 h-10 text-primary" 
+                      className="w-12 h-12 text-primary" 
                       fill="none" 
                       stroke="currentColor" 
                       viewBox="0 0 24 24"
@@ -33,30 +34,35 @@ const ContentSection = ({ title, subtitle, content, imagePosition, index }: Cont
                       />
                     </svg>
                   </div>
-                  <p className="text-muted-foreground font-medium">
-                    Място за изображение {index}
+                  <p className="text-muted-foreground font-semibold text-lg">
+                    Изображение {index}
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Content */}
+          {/* Content Card */}
           <div className={`w-full lg:w-1/2 animate-fade-in-up`} style={{ animationDelay: '0.2s' }}>
-            <div className="space-y-6">
-              <div>
-                <h2 className="text-4xl md:text-5xl font-bold mb-4 text-primary leading-tight">
-                  {title}
-                </h2>
-                <div className="h-1 w-20 bg-accent rounded-full mb-6"></div>
-                <h3 className="text-2xl md:text-3xl font-semibold text-accent/90 mb-6">
-                  {subtitle}
-                </h3>
-              </div>
-              <div className="prose prose-lg max-w-none">
-                <p className="text-foreground/80 leading-relaxed text-lg whitespace-pre-line font-light">
-                  {content}
-                </p>
+            <div className="bg-card rounded-3xl p-10 md:p-12 shadow-medium hover:shadow-large transition-all duration-300 border border-border/50">
+              <div className="space-y-6">
+                <div>
+                  <div className="inline-block px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+                    Глава {index}
+                  </div>
+                  <h2 className="text-4xl md:text-5xl font-bold mb-4 text-primary leading-tight">
+                    {title}
+                  </h2>
+                  <div className="h-1.5 w-20 bg-gradient-island rounded-full mb-6"></div>
+                  <h3 className="text-2xl md:text-3xl font-semibold text-accent mb-6">
+                    {subtitle}
+                  </h3>
+                </div>
+                <div className="prose prose-lg max-w-none">
+                  <p className="text-foreground/80 leading-relaxed text-lg whitespace-pre-line font-light">
+                    {content}
+                  </p>
+                </div>
               </div>
             </div>
           </div>

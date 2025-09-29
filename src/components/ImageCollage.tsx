@@ -34,14 +34,14 @@ const ImageCollage = () => {
         {/* Desktop Grid Layout */}
         <div className="hidden md:grid md:grid-cols-3 gap-6 lg:gap-8 auto-rows-fr">
           {/* Large image - spans 2 rows */}
-          <div className="md:col-span-2 md:row-span-2 animate-fade-in group max-h-[600px]">
+          <div className="md:col-span-2 md:row-span-2 animate-fade-in group max-h-[70vh]">
             <div className="relative p-2 h-full">
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary via-accent to-secondary animate-border-flow opacity-50"></div>
-              <div className="relative h-full rounded-2xl overflow-hidden shadow-large hover:shadow-large transition-all duration-500">
+              <div className="relative h-full rounded-2xl overflow-hidden shadow-large hover:shadow-large transition-all duration-500 flex items-center justify-center">
                 <img
                   src={images[0].src}
                   alt={images[0].alt}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="max-w-full max-h-full w-auto h-auto object-contain transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
@@ -57,11 +57,11 @@ const ImageCollage = () => {
             >
               <div className="relative p-2 h-full">
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-secondary via-primary to-accent animate-border-flow opacity-50"></div>
-                <div className="relative h-full rounded-2xl overflow-hidden shadow-medium hover:shadow-large transition-all duration-500">
+                <div className="relative h-full rounded-2xl overflow-hidden shadow-medium hover:shadow-large transition-all duration-500 flex items-center justify-center">
                   <img
                     src={image.src}
                     alt={image.alt}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="max-w-full max-h-full w-auto h-auto object-contain transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>

@@ -22,12 +22,12 @@ const ContentSection = ({ title, subtitle, content, imagePosition, index, backgr
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary via-accent to-secondary animate-border-flow opacity-60"></div>
               
               {/* Image container */}
-              <div className="relative aspect-[16/11] rounded-3xl overflow-hidden shadow-large hover:shadow-large transition-all duration-500 group">
+              <div className="relative rounded-3xl overflow-hidden shadow-large hover:shadow-large transition-all duration-500 group">
                 {image ? (
                   <img 
                     src={image} 
                     alt={`${title} - ${subtitle}`}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-muted/80 to-muted/40">

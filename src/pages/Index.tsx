@@ -5,6 +5,7 @@ import section1Image from "@/assets/section-1-island.jpg";
 import section2Image from "@/assets/section-2-crusoe.jpg";
 import section3Image from "@/assets/section-3-beach.jpg";
 import section4Image from "@/assets/section-4-writing.jpg";
+import section5Image from "@/assets/section-5-friday.jpg";
 
 const Index = () => {
   const sections = [
@@ -49,7 +50,7 @@ const Index = () => {
       
       {sections.map((section, index) => {
         const backgrounds = ["bg-background", "bg-muted/20", "bg-background", "bg-muted/20", "bg-background"];
-        const images = [section1Image, section2Image, section3Image, section4Image];
+        const images = [section1Image, section2Image, section3Image, section4Image, section5Image];
         return (
           <ContentSection
             key={section.title}

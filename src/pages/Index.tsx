@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero";
 import ContentSection from "@/components/ContentSection";
+import ImageCollage from "@/components/ImageCollage";
 import TeamSection from "@/components/TeamSection";
 import section1Image from "@/assets/section-1-island.jpg";
 import section2Image from "@/assets/section-2-crusoe.jpg";
@@ -64,6 +65,8 @@ const Index = () => {
           />
         );
       })}
+
+      <ImageCollage />
 
       <TeamSection />
 

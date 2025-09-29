@@ -27,9 +27,9 @@ const ImageCollage = () => {
         </div>
 
         {/* Desktop Grid Layout */}
-        <div className="hidden md:grid md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="hidden md:grid md:grid-cols-3 gap-6 lg:gap-8 auto-rows-fr">
           {/* Large image - spans 2 rows */}
-          <div className="md:col-span-2 md:row-span-2 animate-fade-in group">
+          <div className="md:col-span-2 md:row-span-2 animate-fade-in group max-h-[600px]">
             <div className="relative p-2 h-full">
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary via-accent to-secondary animate-border-flow opacity-50"></div>
               <div className="relative h-full rounded-2xl overflow-hidden shadow-large hover:shadow-large transition-all duration-500">
@@ -47,7 +47,7 @@ const ImageCollage = () => {
           {images.slice(1).map((image, index) => (
             <div
               key={index}
-              className="animate-fade-in group"
+              className="animate-fade-in group h-[285px]"
               style={{ animationDelay: `${(index + 1) * 0.1}s` }}
             >
               <div className="relative p-2 h-full">
